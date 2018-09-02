@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+export AWS_ACCESS_KEY_ID=AKIAJ4ZQH7WDRHM6GOFQ
+export AWS_SECRET_ACCESS_KEY=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
+
 DOCKER_IMAGE=spring-boot
 DOCKER_REGISTRY=devopstestapp
-ACCOUNT_ID=071592233073
+ACCOUNT_ID=995935729418
 
 spring-boot-app/mvnw clean install
 
