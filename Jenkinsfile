@@ -1,11 +1,8 @@
 node {
-  stage("Build"){
   checkout scm {
 		sh '''
-        chmod +x deploy.sh
-        ./deploy.sh
+        chmod +x build.sh
+        ./build.sh
         '''
 	}
-  }
-  sh('rm -rf ${BUILD_NUMBER}')
 }
