@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
-export AWS_ACCESS_KEY_ID=AKIAJ4ZQH7WDRHM6GOFQ
-export AWS_SECRET_ACCESS_KEY=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
+export AWS_ACCESS_KEY_ID=AKIAIISRIRCTJZV2KK4Q
+export AWS_SECRET_ACCESS_KEY=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
 
 DOCKER_IMAGE=spring-boot
 DOCKER_REGISTRY=devopstestapp
 ACCOUNT_ID=995935729418
 
-spring-boot-app/mvnw clean install
+cd spring-boot-app/
+./mvnw clean install
+
+cd ..
 
 docker build -t $DOCKER_IMAGE .
 eval $(aws ecr get-login | sed 's|https://||')
