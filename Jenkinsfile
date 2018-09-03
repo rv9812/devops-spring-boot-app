@@ -8,7 +8,6 @@ node {
         '''
       }
     }
-  }
   stage("Deploy"){
   checkout scm
     docker.image('awscli').inside {
@@ -18,5 +17,4 @@ node {
         '''
       }
     }
-  }
-}
+ }
