@@ -25,7 +25,7 @@ public class SampleappApplicationTests {
 	public void getMessage() throws Exception {
 		 mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
          .andExpect(status().isOk())
-         .andExpect(content().string(equalTo("Welcome to Jarvis Community")));
+         .andExpect(content().string(equalTo("Welcome to DevOps Community")));
 	}
 
 }

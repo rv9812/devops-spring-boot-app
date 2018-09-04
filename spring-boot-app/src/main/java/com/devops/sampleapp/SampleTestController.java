@@ -8,6 +8,6 @@ public class SampleTestController {
 
 	@RequestMapping("/")
     public String index() {
-        return "Welcome to Jarvis Community";
+        return "Welcome to DevOps Community";
     }
 }

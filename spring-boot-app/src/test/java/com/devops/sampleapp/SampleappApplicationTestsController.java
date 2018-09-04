@@ -36,7 +36,7 @@ public class SampleappApplicationTestsController {
     public void getMessage() throws Exception {
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
-        assertThat(response.getBody(), equalTo("Welcome to Jarvis Community"));
+        assertThat(response.getBody(), equalTo("Welcome to DevOps Community"));
     }
 	
 }
