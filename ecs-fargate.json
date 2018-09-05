@@ -2,6 +2,11 @@
     "AWSTemplateFormatVersion":"2010-09-09",
     "Description":"Deploy a service on AWS Fargate, hosted in a private subnet, but accessible via a public load balancer.",
     "Parameters":{  
+		"NetworkStackName":{  
+            "Type":"String",
+            "Default":"main-vpc",
+            "Description":"A name for the service"
+        },
         "ServiceName":{  
             "Type":"String",
             "Default":"spring-boot-app",
@@ -101,7 +106,11 @@
             "Type":"AWS::EC2::SecurityGroup",
             "Properties":{  
                 "GroupDescription":"Allow traffic to ECS cluster",
-                "VpcId":"vpc-06588411de49c58f8",
+                "VpcId": {
+					"Fn::ImportValue": {
+							  "Fn::Sub": "${NetworkStackName}-VPCID"
+							}
+				},
                 "SecurityGroupIngress":[  
                     {  
                         "CidrIp":"0.0.0.0/0",
@@ -216,10 +225,15 @@
                                 "Ref":"SecurityGroupECS"
                             }
                         ],
-                        "Subnets":[  
-                            "subnet-067fde6293af52d86",
-                            "subnet-08a535b0305ee5edc"
-                        ]
+                        "Subnets":[ 
+						{  
+								"Fn::ImportValue": {
+								  "Fn::Sub": "${NetworkStackName}-PublicSubnet1AID"
+								},
+								"Fn::ImportValue": {
+								  "Fn::Sub": "${NetworkStackName}-PublicSubnet1BID"
+								}
+						}]
                     }
                 },
                 "TaskDefinition":{  
